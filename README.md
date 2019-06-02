@@ -2,7 +2,7 @@
 APS- para o curso da faculdade
 # Configurações
 Nesse projeto estou usando
-JSF, MAVEN, MYSQL
+JSF, MAVEN, PrimeFace, MYSQL
 # Modelo do Banco de dados.
 
 CRIANDO UM BANCO PARA UMA LOCADORA DE CARROS APS
