@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<h:form id="frm">
+		<p:toolbar>
+			<p:toolbarGroup>
+				<p:commandButton value="Novo" action="#{userBean.novo()}" update=":frm"/>
+				<p:commandButton value="Salvar" action="#{userBean.salvar()}" disabled="#{userBean.busca == true}" update=":frm"/>
+				<p:commandButton value="Buscar" action="#{userBean.buscar}" update=":frm"/>
+			</p:toolbarGroup>
+		</p:toolbar>
+		<p:panel header="Cadastro Cliente">
+			<h:panelGrid columns="2" rendered="#{userBean.busca == false}">
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{userBean.entidade.nome}" />
+				
+				<p:outputLabel value="Sexo"/>
+				<p:inputText value="#{userBean.entidade.sexo}"/>
+				
+				<p:outputLabel value="Email"/>
+				<p:inputText value="#{userBean.entidade.email}"/>
+				
+				<p:outputLabel value="CPF"/>
+				<p:inputMask mask="999.999.999-99" value="#{userBean.entidade.cpf}"/>
+			</h:panelGrid>
+			
+			<p:dataTable value="#{userBean.entidades}" var="u" rendered="#{userBean.busca == true}">
+				<p:column>
+					<p:commandButton value="Editar" action="#{userBean.editar(u)}" update=":frm"/>
+					<p:commandButton value="Delete" action="#{userBean.deletar(u)}" update=":frm"/>
+				</p:column>
+				<p:column headerText="Nome" sortBy="#{u.nome}">
+					<h:outputText value="#{u.nome}"/>
+				</p:column>
+				<p:column headerText="Sexo" sortBy="#{u.sexo}">
+					<h:outputText value="#{u.sexo}"/>
+				</p:column>
+				
+				<p:column headerText="E-mail" sortBy="#{u.email}">
+					<h:outputText value="#{u.email}"/>
+				</p:column>
+				<p:column headerText="CPF" sortBy="#{u.cpf}">
+					<h:outputText value="#{u.cpf}"/>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</ui:decorate>

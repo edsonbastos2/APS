@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<ui:decorate  xmlns="http://www.w3.org/1999/xhtml"
+			  xmlns:h="http://java.sun.com/jsf/html"
+	          xmlns:p="http://primefaces.org/ui"
+	          xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	          template="template.xhtml">
+	          
+	
+	<h:form id="frm">
+		<p:toolbar>
+			<p:toolbarGroup>
+				<p:commandButton value="Novo" action="#{carroBean.novo()}" update=":frm"/>
+				<p:commandButton value="Salvar" action="#{carroBean.salvar()}" disabled="#{carroBean.busca == true}" update=":frm"/>
+				<p:commandButton value="Buscar" action="#{carroBean.buscar()}" update=":frm"/>
+			</p:toolbarGroup>
+		</p:toolbar>
+		<p:panel header="Cadastro Carro">
+			<h:panelGrid columns="2" rendered="#{carroBean.busca == false}">
+				<p:outputLabel value="Fabricante" />
+				<p:inputText value="#{carroBean.entidade.fabricante}" />
+				
+				<p:outputLabel value="Modelo"/>
+				<p:inputText value="#{carroBean.entidade.modelo}"/>
+				
+				<p:outputLabel value="Cor"/>
+				<p:inputText value="#{carroBean.entidade.cor}"/>
+				
+				<p:outputLabel value="Portas"/>
+				<p:inputText value="#{carroBean.entidade.portas}"/>
+				
+				<p:outputLabel value="Combustivel"/>
+				<p:inputText value="#{carroBean.entidade.combustivel}"/>
+				
+				<p:outputLabel value="Ano"/>
+				<p:inputMask mask="9999" value="#{carroBean.entidade.ano}"/>
+				
+			</h:panelGrid>
+			
+			<p:dataTable value="#{carroBean.entidades}" var="carro" rendered="#{carroBean.busca == true}">
+				<p:column>
+					<p:commandButton value="Editar" action="#{carroBean.editar(carro)}" update=":frm"/>
+					<p:commandButton value="Delete" action="#{carroBean.deletar(carro)}" update=":frm"/>
+				</p:column>
+				<p:column headerText="Fabricante" sortBy="#{carro.fabricante}">
+					<h:outputText value="#{carro.fabricante}"/>
+				</p:column>
+				<p:column headerText="Modelo" sortBy="#{carro.modelo}">
+					<h:outputText value="#{carro.modelo}"/>
+				</p:column>
+				<p:column headerText="Cor" sortBy="#{carro.cor}">
+					<h:outputText value="#{carro.cor}"/>
+				</p:column>
+				<p:column headerText="Portas" sortBy="#{carro.portas}">
+					<h:outputText value="#{carro.portas}"/>
+				</p:column>
+				<p:column headerText="Combustivel" sortBy="#{carro.combustivel}">
+					<h:outputText value="#{carro.combustivel}"/>
+				</p:column>
+				<p:column headerText="Ano" sortBy="#{carro.ano}">
+					<h:outputText value="#{carro.ano}"/>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+</ui:decorate>
