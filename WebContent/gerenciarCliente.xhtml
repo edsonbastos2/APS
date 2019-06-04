@@ -16,18 +16,20 @@
 		<p:panel header="Cadastro Cliente">
 			<h:panelGrid columns="2" rendered="#{userBean.busca == false}">
 				<p:outputLabel value="Nome" />
-				<p:inputText value="#{userBean.entidade.nome}" />
+				<p:inputText value="#{userBean.entidade.nome}" required="true" requiredMessage="Prencha com seu nome"/>
 				
 				<p:outputLabel value="Sexo"/>
-				<p:inputText value="#{userBean.entidade.sexo}"/>
+				<p:inputText value="#{userBean.entidade.sexo}" required="true" requiredMessage="Senha é obrigatória"/>
 				
 				<p:outputLabel value="Email"/>
 				<p:inputText value="#{userBean.entidade.email}"/>
 				
 				<p:outputLabel value="CPF"/>
-				<p:inputMask mask="999.999.999-99" value="#{userBean.entidade.cpf}"/>
+				<p:inputMask mask="999.999.999-99" value="#{userBean.entidade.cpf}" required="true" requiredMessage="Prencha seu CPF"/>
 			</h:panelGrid>
-			
+			<br/>
+			   <p:messages id="menssagesAlterarSenha" autoUpdate="true"/>
+			<br/>
 			<p:dataTable value="#{userBean.entidades}" var="u" rendered="#{userBean.busca == true}">
 				<p:column>
 					<p:commandButton value="Editar" action="#{userBean.editar(u)}" update=":frm"/>

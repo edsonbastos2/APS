@@ -71,7 +71,7 @@ public class UserDao implements CrudDao<UserModel> {
 
 			while (resultSet.next()) {
 				UserModel usuario = new UserModel();
-				usuario.setId(resultSet.getInt("idcliente"));
+				usuario.setIdcliente(resultSet.getInt("idcliente"));
 				usuario.setNome(resultSet.getString("nome"));
 				usuario.setSexo(resultSet.getString("sexo"));
 				usuario.setEmail(resultSet.getString("email"));

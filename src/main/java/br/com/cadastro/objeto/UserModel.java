@@ -27,7 +27,7 @@ public class UserModel {
 		return idcliente;
 	}
 	
-	public void setId(Integer idcliente) {
+	public void setIdcliente(Integer idcliente) {
 		this.idcliente = idcliente;
 	}
 	

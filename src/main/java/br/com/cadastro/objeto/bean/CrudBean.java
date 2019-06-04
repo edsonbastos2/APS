@@ -40,6 +40,7 @@ public abstract class CrudBean<E, D extends CrudDao> {
 			adicionarMensagem(ex.getMessage(), FacesMessage.SEVERITY_ERROR);
 		}
 	}
+	@SuppressWarnings("unchecked")
 	public void buscar() {
 		if(!isBusca()) {
 			mudarParaBusca();
