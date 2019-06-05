@@ -1,7 +1,7 @@
 # APS
 APS- para o curso da faculdade
 # Equipe
-Edson Bastos Almeida, carlos Bruno Oliveira Silva;
+Edson Bastos Almeida.
 # Configurações
 Nesse projeto estou usando
 JSF, MAVEN, PrimeFace, MYSQL
